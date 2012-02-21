@@ -21,6 +21,7 @@ etc/AudioFilter.csv
 etc/apns-conf.xml
 etc/gps.conf
 etc/hw_config.sh
+etc/media_profiles.xml
 etc/sensors.conf
 etc/sysctl.conf
 etc/firmware/fm_rx_init_1273.1.bts
