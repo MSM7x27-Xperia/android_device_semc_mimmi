@@ -46,6 +46,7 @@ TARGET_OTA_ASSERT_DEVICE := U20i,U20a,mimmi
 
 # Kernel
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
 BOARD_KERNEL_CMDLINE := console=null
 BOARD_KERNEL_BASE := 0x20000000
 
@@ -99,15 +100,6 @@ USE_OPENGL_RENDERER := true
 
 # Touchscreen
 BOARD_USE_LEGACY_TOUCHSCREEN := true
-
-# Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/semc/mimmi/recovery/recovery_keys.c
-BOARD_CUSTOM_GRAPHICS := ../../../device/semc/mimmi/recovery/graphics.c
-BOARD_HAS_SMALL_RECOVERY := true
-BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_USES_RECOVERY_CHARGEMODE := false
-BOARD_LDPI_RECOVERY := true
-BOARD_HAS_JANKY_BACKBUFFER := true
 
 # Browser
 JS_ENGINE := v8
