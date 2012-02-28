@@ -26,6 +26,7 @@
 
 # Camera
 USE_CAMERA_STUB := true
+LIBCAMERA_BUILD := delta
 
 # inherit from the proprietary version
 -include vendor/semc/mimmi/BoardConfigVendor.mk
