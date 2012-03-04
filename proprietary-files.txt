@@ -18,7 +18,7 @@ bin/slidercounter
 bin/updatemiscta
 etc/apns-conf.xml
 etc/AudioFilter.csv
-etc/apns-conf.xml
+etc/AutoVolumeControl.txt
 etc/gps.conf
 etc/hw_config.sh
 etc/media_profiles.xml
