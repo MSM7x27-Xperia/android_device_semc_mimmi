@@ -45,6 +45,7 @@ namespace android_audio_legacy {
 #define SAMP_RATE_INDX_32000	6
 #define SAMP_RATE_INDX_44100	7
 #define SAMP_RATE_INDX_48000	8
+#define SAMP_RATE_INDX_64000	9
 
 #define EQ_MAX_BAND_NUM 12
 
