@@ -91,7 +91,9 @@ static uint32_t SND_DEVICE_FARFIELD_CL=-1;
 static uint32_t SND_DEVICE_BT=-1;
 static uint32_t SND_DEVICE_BT_EC_OFF=-1;
 static uint32_t SND_DEVICE_HEADSET=-1;
+static uint32_t SND_DEVICE_HEADPHONE=-1;
 static uint32_t SND_DEVICE_FARFIELD_HEADSET=-1;
+static uint32_t SND_DEVICE_FARFIELD_HEADPHONE=-1;
 static uint32_t SND_DEVICE_IN_S_SADC_OUT_HANDSET=-1;
 static uint32_t SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE=-1;
 static uint32_t SND_DEVICE_TTY=-1;
@@ -100,7 +102,6 @@ static uint32_t SND_DEVICE_VCO=-1;
 static uint32_t SND_DEVICE_HAC=-1;
 static uint32_t SND_DEVICE_FARFIELD_CL_FM=-1;
 static uint32_t SND_DEVICE_HEADSET_FM=-1;
-static uint32_t SND_DEVICE_NO_MIC_HEADSET=-1;
 // ----------------------------------------------------------------------------
 
 AudioHardware::AudioHardware() :
@@ -131,7 +132,9 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(BT);
                 CHECK_FOR(BT_EC_OFF);
                 CHECK_FOR(HEADSET);
+                CHECK_FOR(HEADPHONE);
 		CHECK_FOR(FARFIELD_HEADSET);
+		CHECK_FOR(FARFIELD_HEADPHONE);
                 CHECK_FOR(IN_S_SADC_OUT_HANDSET);
                 CHECK_FOR(IN_S_SADC_OUT_SPEAKER_PHONE);
                 CHECK_FOR(TTY);
@@ -939,6 +942,11 @@ static int msm72xx_enable_postproc(bool state)
         device_id = 2;
         LOGI("set device to SND_DEVICE_HEADSET device_id=2");
     }
+    if(snd_device == SND_DEVICE_HEADPHONE)
+    {
+        device_id = 2;
+        LOGI("set device to SND_DEVICE_HEADPHONE device_id=3");
+    }
 
     fd = open(PCM_CTL_DEVICE, O_RDWR);
     if (fd < 0) {
@@ -1162,6 +1170,7 @@ status_t AudioHardware::setMasterVolume(float v)
     set_volume_rpc(SND_DEVICE_FARFIELD_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_BT,      SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_HEADSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_HEADPHONE, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_FARFIELD_HEADSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_IN_S_SADC_OUT_HANDSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE, SND_METHOD_VOICE, vol, m7xsnddriverfd);
@@ -1349,11 +1358,11 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
         } else if (outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADPHONE) {
             if (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) {
                 LOGI("Routing audio to No microphone Wired Headset and Speaker (%d,%x)\n", mMode, outputDevices);
-                new_snd_device = SND_DEVICE_FARFIELD_HEADSET;
+                new_snd_device = SND_DEVICE_FARFIELD_HEADPHONE;
                 new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
             } else {
                 LOGI("Routing audio to No microphone Wired Headset (%d,%x)\n", mMode, outputDevices);
-                new_snd_device = SND_DEVICE_NO_MIC_HEADSET;
+                new_snd_device = SND_DEVICE_HEADPHONE;
             }
 #endif
         } else if (outputDevices & AudioSystem::DEVICE_OUT_WIRED_HEADSET) {
