@@ -484,6 +484,7 @@ int check_and_set_audpp_parameters(char *buf, int size)
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
+        if(buf[1] == '4') device_id=3;
         if (!(p = strtok(buf, ",")))
             goto token_err;
 
@@ -510,6 +511,7 @@ int check_and_set_audpp_parameters(char *buf, int size)
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
+        if(buf[1] == '4') device_id=3;
         adrc_filter_exists[device_id] = true;
         if (!(p = strtok(buf, ",")))
             goto token_err;
@@ -564,6 +566,7 @@ int check_and_set_audpp_parameters(char *buf, int size)
         if(buf[1] == '1') device_id=0;
         if(buf[1] == '2') device_id=1;
         if(buf[1] == '3') device_id=2;
+        if(buf[1] == '4') device_id=3;
         if (!(p = strtok(buf, ",")))
             goto token_err;
 
@@ -1166,11 +1169,11 @@ status_t AudioHardware::setMasterVolume(float v)
     android::Mutex::Autolock lock(mLock);
     int vol = ceil(v * 5.0);
     LOGI("Set master volume to %d.\n", vol);
-    set_volume_rpc(SND_DEVICE_HANDSET_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);
-    set_volume_rpc(SND_DEVICE_FARFIELD_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);
-    set_volume_rpc(SND_DEVICE_BT,      SND_METHOD_VOICE, vol, m7xsnddriverfd);
-    set_volume_rpc(SND_DEVICE_HEADSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
-    set_volume_rpc(SND_DEVICE_HEADPHONE, SND_METHOD_VOICE, vol, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_HANDSET_CL, SND_METHOD_VOICE, 1, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_FARFIELD_CL, SND_METHOD_VOICE, 1, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_BT, SND_METHOD_VOICE, vol, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_HEADSET, SND_METHOD_VOICE, 1, m7xsnddriverfd);
+    set_volume_rpc(SND_DEVICE_HEADPHONE, SND_METHOD_VOICE, 1, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_FARFIELD_HEADSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_IN_S_SADC_OUT_HANDSET, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_IN_S_SADC_OUT_SPEAKER_PHONE, SND_METHOD_VOICE, vol, m7xsnddriverfd);
