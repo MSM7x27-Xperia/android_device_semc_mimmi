@@ -26,7 +26,6 @@
 
 # Camera
 USE_CAMERA_STUB := true
-LIBCAMERA_BUILD := delta
 
 # inherit from the proprietary version
 -include vendor/semc/mimmi/BoardConfigVendor.mk
@@ -35,7 +34,7 @@ LIBCAMERA_BUILD := delta
 TARGET_SPECIFIC_HEADER_PATH := device/semc/mimmi/include
 
 # Platform
-TARGET_BOARD_PLATFORM := msm7k
+TARGET_BOARD_PLATFORM := msm7x27
 TARGET_BOARD_PLATFORM_GPU := adreno200
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_CPU_ABI := armeabi-v6l
@@ -73,10 +72,6 @@ BOARD_EGL_CFG := device/semc/mimmi/prebuilt/egl.cfg
 BOARD_USES_GENERIC_AUDIO := false
 TARGET_PROVIDES_LIBAUDIO := true
 
-# Skia
-BOARD_USE_SKIA_LCDTEXT := true
-ALLOW_DEQUEUE_CURRENT_BUFFER := true
-
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_CUSTOM_HCIATTACH := true
@@ -84,29 +79,45 @@ BOARD_HAVE_BLUETOOTH_CUSTOM_HCIATTACH := true
 # Display, HW Accel
 BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
 TARGET_FORCE_CPU_UPLOAD := true
-TARGET_USES_GENLOCK := false
-TARGET_USES_OVERLAY := false
 TARGET_QCOM_HDMI_OUT := false
 TARGET_USE_HDMI_AS_PRIMARY := false
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_NO_RGBX_8888 := true
 TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
+ALLOW_DEQUEUE_CURRENT_BUFFER := true
+BOARD_USE_SKIA_LCDTEXT := true
 
-# Qcomm Libs
+# With new kernel = true
+USE_OPENGL_RENDERER := true
+TARGET_USES_GENLOCK := true
+TARGET_USES_OVERLAY := true
+
+# GPS
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
-BOARD_USES_QCOM_LIBRPC := false
-USE_OPENGL_RENDERER := false
+BOARD_USES_QCOM_GPS := true
+BOARD_VENDOR_QCOM_AMSS_VERSION := 1240
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := delta
+BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
 # Touchscreen
 BOARD_USE_LEGACY_TOUCHSCREEN := true
 
-# Browser
-JS_ENGINE := v8
-
 # Recovery
+BOARD_CUSTOM_BOOTIMG_MK := device/semc/mimmi/custombootimg.mk
 TARGET_RECOVERY_PRE_COMMAND := "mkdir /cache/recovery;touch /cache/recovery/boot;sync;"
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_USES_RECOVERY_CHARGEMODE := false
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/semc/mimmi/recovery/recovery_keys.c
+BOARD_HAS_BOOT_RECOVERY := true
+BOARD_HAS_SMALL_RECOVERY := true
+BOARD_LDPI_RECOVERY := true
+
+# JIT
+WITH_JIT := true
+ENABLE_JSC_JIT := true
+JS_ENGINE := v8
 
 # SD Mount
 BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"

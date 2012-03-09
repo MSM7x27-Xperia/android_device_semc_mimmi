@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VENDOR=SEMC
+VENDOR=semc
 DEVICE=mimmi
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
