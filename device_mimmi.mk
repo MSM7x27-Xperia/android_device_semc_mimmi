@@ -54,18 +54,34 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
 
+# SRS Copy files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/srs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/prebuilt/srs/libsrsfx.so:system/lib/soundfx/libsrsfx.so \
+    $(LOCAL_PATH)/prebuilt/srs/libsrstb.so:system/lib/soundfx/libsrstb.so
+
+# WiFi Copy files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/wlan/10dnsconf:system/etc/init.d/10dnsconf \
+    $(LOCAL_PATH)/prebuilt/wlan/10hostapconf:system/etc/init.d/10hostapconf \
+    $(LOCAL_PATH)/prebuilt/wlan/hostapd.conf:system/etc/wifi/softap/hostapd.conf \
+    $(LOCAL_PATH)/prebuilt/wlan/tiap_cu:system/bin/tiap_cu \
+    $(LOCAL_PATH)/prebuilt/wlan/tiap_loader:system/bin/tiap_loader \
+    $(LOCAL_PATH)/prebuilt/wlan/tiap_loader.sh:system/bin/tiap_loader.sh \
+    $(LOCAL_PATH)/prebuilt/wlan/wlan_cu:system/bin/wlan_cu \
+    $(LOCAL_PATH)/prebuilt/wlan/wlan_loader:system/bin/wlan_loader \
+    $(LOCAL_PATH)/prebuilt/dhcpcd:system/bin/dhcpcd
+
 PRODUCT_PACKAGES += \
     audio.primary.delta \
     audio_policy.delta \
     audio.a2dp.default \
-    gralloc.delta \
-    copybit.delta \
     gps.delta \
-    libstagefrighthw \
-    libmm-omxcore \
     libOmxCore \
-    libOmxVidEnc \
-    persist.sys.use_16bpp_alpha=1 \
+    libmm-omxcore \
+    libmemalloc \
+    libQcomUI \
+    libsurfaceflinger \
     com.android.future.usb.accessory
 
 PRODUCT_LOCALES += mdpi
