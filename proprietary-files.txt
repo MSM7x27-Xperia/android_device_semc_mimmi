@@ -61,6 +61,7 @@ lib/libmmipl.so
 lib/libmmjpeg.so
 lib/libnv.so
 lib/liboemcamera.so
+lib/liboem_rapi.so
 lib/liboncrpc.so
 lib/libopencore_common.so
 lib/libpbmlib.so
