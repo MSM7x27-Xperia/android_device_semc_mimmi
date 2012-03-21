@@ -79,12 +79,11 @@ PRODUCT_PACKAGES += \
     gps.delta \
     libOmxCore \
     libmm-omxcore \
-    libmemalloc \
-    libQcomUI \
-    libsurfaceflinger \
     com.android.future.usb.accessory
 
-PRODUCT_LOCALES += mdpi
+PRODUCT_LOCALES += \
+    ldpi \
+    mdpi
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
