@@ -76,6 +76,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/wlan/tiap_cu:system/bin/tiap_cu \
     $(LOCAL_PATH)/prebuilt/wlan/tiap_loader:system/bin/tiap_loader \
     $(LOCAL_PATH)/prebuilt/wlan/tiap_loader.sh:system/bin/tiap_loader.sh \
+    $(LOCAL_PATH)/prebuilt/wlan/tiwlan.ini:system/etc/wifi/tiwlan.ini \
+    $(LOCAL_PATH)/prebuilt/wlan/tiwlan_ap.ini:system/etc/wifi/softap/tiwlan_ap.ini \
+    $(LOCAL_PATH)/prebuilt/wlan/tiwlan_firmware.bin:system/etc/wifi/tiwlan_firmware.bin \
+    $(LOCAL_PATH)/prebuilt/wlan/tiwlan_firmware_ap.bin:system/etc/wifi/softap/tiwlan_firmware_ap.bin \
     $(LOCAL_PATH)/prebuilt/wlan/wlan_cu:system/bin/wlan_cu \
     $(LOCAL_PATH)/prebuilt/wlan/wlan_loader:system/bin/wlan_loader
 
@@ -95,9 +99,7 @@ PRODUCT_PACKAGES += \
     libmm-omxcore \
     libopencorehw
 
-PRODUCT_LOCALES += \
-   ldpi \
-   mdpi
+PRODUCT_LOCALES += mdpi
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
