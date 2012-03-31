@@ -54,36 +54,50 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
 
-# SRS Copy files
+# Crappy headset files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/srs/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/prebuilt/srs/libsrsfx.so:system/lib/soundfx/libsrsfx.so \
-    $(LOCAL_PATH)/prebuilt/srs/libsrstb.so:system/lib/soundfx/libsrstb.so
+    $(LOCAL_PATH)/prebuilt/headset/AudioFilter.csv:system/etc/AudioFilter.csv \
+    $(LOCAL_PATH)/prebuilt/headset/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
+    $(LOCAL_PATH)/prebuilt/headset/hal_seport.default.so:system/lib/hw/hal_seport.default.so \
+    $(LOCAL_PATH)/prebuilt/headset/libaudioeq.so:system/lib/libaudioeq.so \
+    $(LOCAL_PATH)/prebuilt/headset/libsystemconnector_hal_jni.so:system/lib/libsystemconnector_hal_jni.so \
+    $(LOCAL_PATH)/prebuilt/headset/libuinputdevicejni.so:system/lib/libsystemconnector/libuinputdevicejni.so \
+    $(LOCAL_PATH)/prebuilt/headset/systemconnector.kcm.bin:system/usr/keychars/systemconnector.kcm.bin \
+    $(LOCAL_PATH)/prebuilt/headset/systemconnector.kl:system/usr/keylayout/systemconnector.kl \
+    $(LOCAL_PATH)/prebuilt/headset/SystemConnector.apk:system/app/SystemConnector.apk
 
-# WiFi Copy files
+# WiFi files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/wlan/10dnsconf:system/etc/init.d/10dnsconf \
     $(LOCAL_PATH)/prebuilt/wlan/10hostapconf:system/etc/init.d/10hostapconf \
+    $(LOCAL_PATH)/prebuilt/wlan/dhcpcd:system/bin/dhcpcd \
+    $(LOCAL_PATH)/prebuilt/wlan/dnsmasq.conf:system/etc/wifi/dnsmasq.conf \
     $(LOCAL_PATH)/prebuilt/wlan/hostapd.conf:system/etc/wifi/softap/hostapd.conf \
     $(LOCAL_PATH)/prebuilt/wlan/tiap_cu:system/bin/tiap_cu \
     $(LOCAL_PATH)/prebuilt/wlan/tiap_loader:system/bin/tiap_loader \
     $(LOCAL_PATH)/prebuilt/wlan/tiap_loader.sh:system/bin/tiap_loader.sh \
     $(LOCAL_PATH)/prebuilt/wlan/wlan_cu:system/bin/wlan_cu \
-    $(LOCAL_PATH)/prebuilt/wlan/wlan_loader:system/bin/wlan_loader \
-    $(LOCAL_PATH)/prebuilt/dhcpcd:system/bin/dhcpcd
+    $(LOCAL_PATH)/prebuilt/wlan/wlan_loader:system/bin/wlan_loader
+
+# ramdisk files
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/init.delta.usb.rc:root/init.delta.usb.rc
 
 PRODUCT_PACKAGES += \
     audio.primary.delta \
     audio_policy.delta \
     audio.a2dp.default \
+    copybit.msm7x27 \
+    gralloc.msm7x27 \
+    hwcomposer.msm7x27 \
     gps.delta \
     libOmxCore \
     libmm-omxcore \
-    com.android.future.usb.accessory
+    libopencorehw
 
 PRODUCT_LOCALES += \
-    ldpi \
-    mdpi
+   ldpi \
+   mdpi
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

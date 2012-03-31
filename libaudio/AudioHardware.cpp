@@ -17,8 +17,8 @@
 
 #include <math.h>
 
-#define LOG_NDEBUG 1
-#define LOG_TAG "PaulAudioHardware"
+//#define LOG_NDEBUG 0
+#define LOG_TAG "PaulAudioLib"
 #include <utils/Log.h>
 #include <utils/String8.h>
 
@@ -1191,7 +1191,7 @@ status_t AudioHardware::setVoiceVolume(float v)
 status_t AudioHardware::setMasterVolume(float v)
 {
     android::Mutex::Autolock lock(mLock);
-    int vol = ceil(v * 1.0);
+    int vol = ceil(v * 5.0);
     LOGI("Set master volume to %d.\n", vol);
     set_volume_rpc(SND_DEVICE_HANDSET_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_FARFIELD_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);

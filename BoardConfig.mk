@@ -26,8 +26,6 @@
 
 # Camera
 USE_CAMERA_STUB := true
-BOARD_USE_ECLAIR_LIBCAMERA := true
-BOARD_CAMERA_LIBRARIES := libcamera
 
 # inherit from the proprietary version
 -include vendor/semc/mimmi/BoardConfigVendor.mk
@@ -41,6 +39,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_ARCH_VARIANT := armv6-vfp
 TARGET_CPU_ABI := armeabi-v6l
 TARGET_CPU_ABI2 := armeabi
+ARCH_ARM_HAVE_VFP := true
 
 # Info
 TARGET_BOOTLOADER_BOARD_NAME := delta
@@ -84,27 +83,29 @@ BOARD_AVOID_DRAW_TEXTURE_EXTENSION := true
 BOARD_NO_RGBX_8888 := true
 BOARD_USE_SKIA_LCDTEXT := true
 TARGET_FORCE_CPU_UPLOAD := true
-TARGET_QCOM_HDMI_OUT := false
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
-TARGET_USE_HDMI_AS_PRIMARY := false
-TARGET_USES_C2D_COMPOSITION := true
-TARGET_USES_SF_BYPASS := false
-TARGET_HAVE_BYPASS := false
 TARGET_GRALLOC_USES_ASHMEM := true
+TARGET_PROVIDES_LIBRIL := true
+TARGET_USES_SF_BYPASS := false
+
+# Enable GB compatibility
+COMMON_GLOBAL_CFLAGS += \
+    -DBINDER_COMPAT \
+    -DMISSING_GRALLOC_BUFFERS \
+    -DREFRESH_RATE=60 \
+    -DQCOM_HARDWARE \
+    -DFORCE_CPU_UPLOAD
 
 # With new kgsl 1.2 and new adreno libs need true
 USE_OPENGL_RENDERER := true
 TARGET_USES_GENLOCK := false
-TARGET_USES_OVERLAY := false
 
-# Hack
-COMMON_GLOBAL_CFLAGS += -DTARGET_MSM7x27 \
-     -DQCOM_HARDWARE \
-     -DMISSING_EGL_EXTERNAL_IMAGE \
-     -DMISSING_GRALLOC_BUFFERS \
-     -DMISSING_EGL_PIXEL_FORMAT_YV12 \
-     -DEGL_TRACE \
-     -DFORCE_CPU_UPLOAD
+# Overlay
+TARGET_USES_C2D_COMPOSITION := false
+TARGET_USES_OVERLAY := false
+TARGET_HAVE_BYPASS := false
+
+TARGET_QCOM_HDMI_OUT := false
 
 # GPS
 BOARD_USES_QCOM_HARDWARE := true
@@ -129,7 +130,7 @@ BOARD_LDPI_RECOVERY := true
 
 # JIT
 WITH_JIT := true
-ENABLE_JSC_JIT := true
+HTTP := chrome
 JS_ENGINE := v8
 
 # SD Mount
@@ -139,3 +140,4 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/f
 # A custom ota package maker for a device without a boot partition
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/semc/mimmi/releasetools/semc_ota_from_target_files
 TARGET_PREBUILT_KERNEL := device/semc/mimmi/prebuilt/kernel
+
