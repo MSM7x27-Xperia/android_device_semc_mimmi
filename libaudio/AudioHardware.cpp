@@ -133,6 +133,10 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(HEADPHONE);
                 CHECK_FOR(FARFIELD_HEADSET);
                 CHECK_FOR(FARFIELD_HEADPHONE);
+                CHECK_FOR(FARFIELD_CL_FM);
+                CHECK_FOR(HEADSET_FM);
+                CHECK_FOR(HEADPHONE_FM);
+                CHECK_FOR(DHVH_FM);
                 CHECK_FOR(DHVH);
                 CHECK_FOR(BT);
                 CHECK_FOR(BT_NREC);
@@ -1173,7 +1177,7 @@ status_t AudioHardware::setVoiceVolume(float v)
         v = 1.0;
     }
 
-    int vol = lrint(v * 5.0);
+    int vol = lrint(v * 1.0);
     LOGD("setVoiceVolume(%f)\n", v);
     LOGI("Setting in-call volume to %d (available range is 0 to 7)\n", vol);
 
@@ -1191,7 +1195,7 @@ status_t AudioHardware::setVoiceVolume(float v)
 status_t AudioHardware::setMasterVolume(float v)
 {
     android::Mutex::Autolock lock(mLock);
-    int vol = ceil(v * 5.0);
+    int vol = ceil(v * 7.0);
     LOGI("Set master volume to %d.\n", vol);
     set_volume_rpc(SND_DEVICE_HANDSET_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);
     set_volume_rpc(SND_DEVICE_FARFIELD_CL, SND_METHOD_VOICE, vol, m7xsnddriverfd);

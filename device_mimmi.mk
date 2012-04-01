@@ -37,14 +37,11 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
-    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
 
 # Vold
 PRODUCT_COPY_FILES += \
@@ -53,6 +50,10 @@ PRODUCT_COPY_FILES += \
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
+
+# MediaProfiles configuration file
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/media_profiles.xml:system/etc/media_profiles.xml
 
 # Crappy headset files
 PRODUCT_COPY_FILES += \
@@ -83,14 +84,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/wlan/wlan_cu:system/bin/wlan_cu \
     $(LOCAL_PATH)/prebuilt/wlan/wlan_loader:system/bin/wlan_loader
 
-# ramdisk files
+# Ramdisk files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/init.delta.usb.rc:root/init.delta.usb.rc
 
 PRODUCT_PACKAGES += \
     audio.primary.delta \
     audio_policy.delta \
-    audio.a2dp.default \
     copybit.msm7x27 \
     gralloc.msm7x27 \
     hwcomposer.msm7x27 \

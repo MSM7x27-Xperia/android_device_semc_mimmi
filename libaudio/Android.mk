@@ -44,7 +44,7 @@ LOCAL_SRC_FILES += AudioHardware.cpp
 LOCAL_CFLAGS += -fno-short-enums
 
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
-#  LOCAL_SHARED_LIBRARIES += audio.a2dp.default
+  LOCAL_SHARED_LIBRARIES += audio.a2dp.default
 endif
 
 include $(BUILD_SHARED_LIBRARY)
