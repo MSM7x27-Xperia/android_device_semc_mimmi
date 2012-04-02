@@ -26,7 +26,11 @@ debug.gr.numframebuffers=2
 ro.compcache.default=0
 video.accelerate.hw=1
 hwui.render_dirty_regions=false
-hwui.disable_vsync=true 
+hwui.disable_vsync=true
+persist.sys.use_dithering=0
+persist.sys.use_16bpp_alpha=1
+com.qc.hardware=true
+debug.gr.numframebuffers=2
 
 # LCD
 ro.sf.lcd_density=120
