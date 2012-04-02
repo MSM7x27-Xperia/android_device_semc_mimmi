@@ -89,6 +89,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/init.delta.usb.rc:root/init.delta.usb.rc
 
 PRODUCT_PACKAGES += \
+    audio.a2dp.default \
     audio.primary.delta \
     audio_policy.delta \
     copybit.msm7x27 \
@@ -98,6 +99,12 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libmm-omxcore \
     libopencorehw
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.goo.developerid=paul-xxx \
+    ro.goo.rom=CM9-OXP \
+    ro.goo.version=V03 \
+    ro.goo.board=mimmi
 
 PRODUCT_LOCALES += mdpi
 
