@@ -103,7 +103,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.goo.developerid=paul-xxx \
     ro.goo.rom=CM9-OXP \
-    ro.goo.version=V03 \
+    ro.goo.version=002 \
     ro.goo.board=mimmi
 
 PRODUCT_LOCALES += mdpi
