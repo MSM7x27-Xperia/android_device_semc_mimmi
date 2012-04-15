@@ -92,7 +92,6 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.primary.delta \
     audio_policy.delta \
-    copybit.msm7x27 \
     gralloc.msm7x27 \
     hwcomposer.msm7x27 \
     gps.delta \
