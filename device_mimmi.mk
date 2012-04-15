@@ -93,7 +93,7 @@ PRODUCT_PACKAGES += \
     audio.primary.delta \
     audio_policy.delta \
     gralloc.msm7x27 \
-    hwcomposer.msm7x27 \
+    hwcomposer.default \
     gps.delta \
     libOmxCore \
     libmm-omxcore \
