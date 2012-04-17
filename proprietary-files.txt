@@ -1,5 +1,6 @@
 app/Torch.apk
 bin/akmd2
+bin/chargemon
 bin/hciattach
 bin/inputattach
 bin/nvimport
@@ -51,6 +52,7 @@ lib/libmm-adspsvc.so
 lib/libmmgsdilib.so
 lib/libmmipl.so
 lib/libmmjpeg.so
+lib/libmm-omxcore.so
 lib/libnv.so
 lib/liboemcamera.so
 lib/liboem_rapi.so
@@ -67,6 +69,7 @@ lib/libOmxMp3Dec.so
 lib/libOmxMpeg4Dec.so
 lib/libOmxQcelp13Enc.so
 lib/libOmxQcelpDec.so
+lib/libOmxVidEnc.so
 lib/libOmxWmaDec.so
 lib/libOmxWmvDec.so
 lib/liboncrpc.so
@@ -89,4 +92,3 @@ usr/keylayout/7k_handset.kl
 usr/keylayout/AVRCP.kl
 usr/keylayout/h2w_headset.kl
 usr/keylayout/mimmi_keypad.kl
-
